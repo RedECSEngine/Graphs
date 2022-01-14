@@ -27,17 +27,33 @@ public struct AStarPathFinding {
     public static func getPath<N>(
         from: GridGraph<N>.Node,
         to: GridGraph<N>.Node,
-        in graph: GridGraph<N>
+        in graph: GridGraph<N>,
+        reverseLookupAlgorithmDirection: Bool = false
     ) -> [GridGraph<N>.Node] {
-        return getPath(from: from, to: to, in: graph, cost: distanceCalculation)
+        return getPath(
+            from: from,
+            to: to,
+            in: graph,
+            cost: distanceCalculation,
+            reverseLookupAlgorithmDirection: reverseLookupAlgorithmDirection
+        )
     }
     
     public static func getPath<G: Graph>(
         from: G.Node,
         to: G.Node,
         in graph: G,
-        cost: @escaping (G.Node, G.Node) -> Double
+        cost: @escaping (G.Node, G.Node) -> Double,
+        reverseLookupAlgorithmDirection: Bool = false
     ) -> [G.Node] {
+        guard graph.canVisit(node: to) else {
+            return []
+        }
+        
+        if reverseLookupAlgorithmDirection {
+            return Array(getPath(from: to, to: from, in: graph, cost: cost, reverseLookupAlgorithmDirection: false).reversed())
+        }
+        
         var tableData: [G.Node: NodeTableData<G>] = [:]
         var closedNodes: Set<G.Node> = []
         var openNodes: Set<G.Node> = []
