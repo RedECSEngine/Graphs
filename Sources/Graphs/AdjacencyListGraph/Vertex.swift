@@ -1,7 +1,7 @@
 import Foundation
 
 public struct Vertex<
-    VertexType: Equatable & Hashable & Codable
+    VertexType: Hashable & Codable
 >: Equatable, Hashable, Codable {
     public var data: VertexType
     public let index: Int

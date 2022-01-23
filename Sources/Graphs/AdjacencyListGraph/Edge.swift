@@ -8,9 +8,9 @@
 import Foundation
 
 public struct Edge<
-    VertexType: Equatable & Hashable & Codable,
-    EdgeType: Equatable & Hashable & Codable
->: Equatable & Hashable & Codable {
+    VertexType: Hashable & Codable,
+    EdgeType: Hashable & Codable
+>: Hashable & Codable {
     public let from: Vertex<VertexType>
     public let to: Vertex<VertexType>
 

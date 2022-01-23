@@ -21,7 +21,7 @@ public struct AStarPathFinding {
         }
         var previousNode: G.Node?
         
-        var description: String { "s:\(distanceFromStart),e:\(distanceToEnd),p:\(previousNode)" }
+        var description: String { "s:\(distanceFromStart),e:\(distanceToEnd),p:\(String(describing: previousNode))" }
     }
     
     public static func getPath<N>(

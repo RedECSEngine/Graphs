@@ -1,8 +1,8 @@
 import Foundation
 
 public struct EdgeList<
-    VertexType: Equatable & Hashable & Codable,
-    EdgeType: Equatable & Hashable & Codable
+    VertexType: Hashable & Codable,
+    EdgeType: Hashable & Codable
 >: Equatable & Hashable & Codable {
     public var vertex: Vertex<VertexType>
     public var edges: [Edge<VertexType, EdgeType>]?
@@ -17,8 +17,8 @@ public struct EdgeList<
 }
 
 public struct AdjacencyListGraph<
-    VertexType: Equatable & Hashable & Codable,
-    EdgeType: Equatable & Hashable & Codable
+    VertexType: Hashable & Codable,
+    EdgeType: Hashable & Codable
 >: Equatable & Hashable & Codable {
     public var adjacencyList: [EdgeList<VertexType, EdgeType>] = []
 
