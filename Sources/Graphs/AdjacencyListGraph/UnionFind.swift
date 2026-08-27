@@ -6,7 +6,6 @@
  finding set of element is almost O(1)
  union sets is almost O(1)
  */
-import Foundation
 
 public struct UnionFind<T: Hashable> {
     private var index = [T: Int]()
@@ -60,3 +59,5 @@ public struct UnionFind<T: Hashable> {
         }
     }
 }
+
+extension UnionFind: Sendable where T: Sendable {}

@@ -1,14 +1,12 @@
-import Foundation
 
 public protocol VisitableNode: Hashable {
     func canVisit() -> Bool
 }
 
 private func distanceCalculation<N>(from: GridNode<N>, to: GridNode<N>) -> Double {
-    return sqrt(
-        pow(Double(from.position.x - to.position.x), 2)  +
-        pow(Double(from.position.y - to.position.y), 2)
-    )
+    let dx = Double(from.position.x - to.position.x)
+    let dy = Double(from.position.y - to.position.y)
+    return (dx * dx + dy * dy).squareRoot()
 }
 
 /// https://www.youtube.com/watch?v=eSOJ3ARN5FM
@@ -105,3 +103,5 @@ public struct AStarPathFinding {
         }
     }
 }
+
+extension AStarPathFinding: Sendable {}

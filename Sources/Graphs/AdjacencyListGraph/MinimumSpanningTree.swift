@@ -1,4 +1,3 @@
-import Foundation
 
 public func minimumSpanningTreeKruskal<T, D>(
     graph: AdjacencyListGraph<T, D>

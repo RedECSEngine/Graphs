@@ -5,7 +5,6 @@
 //  Created by Andrew McKnight on 5/8/16.
 //
 
-import Foundation
 
 public struct Edge<
     VertexType: Hashable & Codable,
@@ -23,3 +22,5 @@ extension Edge: CustomStringConvertible {
         return "\(from.description) -(\(weight))-> \(to.description)"
     }
 }
+
+extension Edge: Sendable where VertexType: Sendable, EdgeType: Sendable {}

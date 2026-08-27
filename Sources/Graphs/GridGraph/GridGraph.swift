@@ -110,3 +110,5 @@ extension GridGraph: Graph where N: VisitableNode {
         node.data.canVisit()
     }
 }
+
+extension GridGraph: Sendable where N: Sendable {}

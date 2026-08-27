@@ -1,4 +1,3 @@
-import Foundation
 
 public struct Vertex<
     VertexType: Hashable & Codable
@@ -12,3 +11,5 @@ extension Vertex: CustomStringConvertible {
         return "\(index): \(data)"
     }
 }
+
+extension Vertex: Sendable where VertexType: Sendable {}

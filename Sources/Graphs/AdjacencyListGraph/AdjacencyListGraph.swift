@@ -1,4 +1,3 @@
-import Foundation
 
 public struct EdgeList<
     VertexType: Hashable & Codable,
@@ -154,3 +153,7 @@ extension AdjacencyListGraph: Graph where VertexType: VisitableNode {
         })
     }
 }
+
+extension EdgeList: Sendable where VertexType: Sendable, EdgeType: Sendable {}
+
+extension AdjacencyListGraph: Sendable where VertexType: Sendable, EdgeType: Sendable {}
