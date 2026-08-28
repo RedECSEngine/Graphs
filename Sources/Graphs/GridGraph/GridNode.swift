@@ -10,3 +10,5 @@ extension GridNode: Codable where N: Codable {}
 extension GridNode: CustomStringConvertible {
     public var description: String { "[\(position):\(data)]" }
 }
+
+extension GridNode: Sendable where N: Sendable {}

@@ -1,4 +1,3 @@
-import Foundation
 
 public struct EdgeList<
     VertexType: Hashable & Codable,
@@ -42,17 +41,18 @@ public struct AdjacencyListGraph<
     }
 
     public var edges: [Edge<VertexType, EdgeType>] {
-        var allEdges = Set<Edge<VertexType, EdgeType>>()
+        var uniqueEdges = Set<Edge<VertexType, EdgeType>>()
+        var allEdges = Array<Edge<VertexType, EdgeType>>()
         for edgeList in adjacencyList {
             guard let edges = edgeList.edges else {
                 continue
             }
-
-            for edge in edges {
-                allEdges.insert(edge)
+            for edge in edges where !uniqueEdges.contains(edge) {
+                uniqueEdges.insert(edge)
+                allEdges.append(edge)
             }
         }
-        return Array(allEdges)
+        return allEdges
     }
 
     public mutating func createVertex(_ data: VertexType) -> Vertex<VertexType> {
@@ -153,3 +153,7 @@ extension AdjacencyListGraph: Graph where VertexType: VisitableNode {
         })
     }
 }
+
+extension EdgeList: Sendable where VertexType: Sendable, EdgeType: Sendable {}
+
+extension AdjacencyListGraph: Sendable where VertexType: Sendable, EdgeType: Sendable {}

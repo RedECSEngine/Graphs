@@ -1,4 +1,3 @@
-import Foundation
 
 public protocol Graph {
     associatedtype Node: Hashable

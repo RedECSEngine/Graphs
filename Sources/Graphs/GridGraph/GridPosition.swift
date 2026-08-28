@@ -14,3 +14,5 @@ public struct GridPosition: Hashable, Codable {
 extension GridPosition: CustomStringConvertible {
     public var description: String { "(\(x),\(y))" }
 }
+
+extension GridPosition: Sendable {}
